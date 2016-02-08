@@ -1,0 +1,12 @@
+(SETQ x (READ-line))
+;(setq x '(hola))
+;(LOOP (IF x (PRINT (POP x)(terpri))
+;(RETURN ’FIN) )))
+(DO ((a 0 (+ a 1)))
+((> a (length x))(print "Fin"))
+(print (aref x a)))
+
+;(DO ((a (length x) (- a 1)))
+;((= a 0)(print "Fin"))
+;(print (aref x (- (length x) a))))
+;(if(>))

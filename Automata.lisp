@@ -1,0 +1,118 @@
+(DEFUN estado1(x c)
+	(IF(< c (LENGTH x))	
+;		(IF (= (aref x c) (QUOTE a))
+;			(SETQ  c (+ c 1))
+;			(estado2(x c))
+;		)
+		(COND (
+			(
+				(= (aref x c) (QUOTE a))
+				((SETQ  c (c+1))(estado2(x c)))
+			)
+			(/= (aref x c) (QUOTE a))
+			((IF (= (aref x c) (QUOTE 'd))
+				(SETQ  c (+ c 1))
+				(estado5(x c))
+			))
+		      )
+		      (t (error())
+		      )
+		)
+;		(COND (= (aref x c) (QUOTE 'a)
+;			(IF (= (aref x c) (QUOTE 'd))
+;				(SETQ  c (+ c 1))
+;				(estado5(x c))
+;			)
+;			(COND (= (aref x c) (QUOTE 'a)
+;				(error())
+;			)
+;		)
+	)
+)
+
+(DEFUN estado2(x,c)
+	(IF(< c (LENGTH x))	
+		(IF (= (aref x c) (QUOTE b))
+			(SETQ  c (+ c 1))
+			(estado2(x,c))
+		)
+		(COND (
+			(= (aref x c) (QUOTE a))
+			(
+				(SETQ  c (+ c 1))
+				(estado3(x,c))
+			)
+		      )
+		      (t (error())
+		      )
+		)
+	)
+)
+
+(DEFUN estado3(x,c)
+	(IF(< c (LENGTH x))
+		(COND (
+			(= (aref x c) (QUOTE a))
+			(
+				(SETQ  c (+ c 1))
+				(estado4(x,c))
+			)
+		      )
+		      (t (error())
+		      )
+		)
+	)
+)
+
+(DEFUN estado4(x,c)
+	(IF(< c (LENGTH x))
+		(COND (
+			(= (aref x c) (QUOTE b))
+			(
+				(SETQ  c (+ c 1))
+				(estado6(x,c))
+			)
+		      )
+		      (t (error())
+		      )
+		)
+	)
+)
+
+(DEFUN estado5(x,c)
+	(IF(< c (LENGTH x))
+		(COND (
+			(= (aref x c) (QUOTE d))
+			(
+				(SETQ  c (+ c 1))
+				(estado3(x,c))
+			)
+		      )
+		      (t (error())
+		      )
+		)
+	)
+)
+
+(DEFUN estado6(x,c)
+	
+		(COND (
+			(= c (LENGTH x))
+			(print "Cadena Aceptada")
+		      )
+		      (t (error())
+		      )
+		)
+	
+)
+
+(DEFUN error() (print "Cadena Rechazada"))
+
+(PRINT "Ingrese Token...")
+(SETQ x (READ-line))
+(SETQ c 0)
+(estado1 x c)
+
+;(SYMBOLP s)
+;(NUMBERP s)
+
